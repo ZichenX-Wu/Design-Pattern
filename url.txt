@@ -1,0 +1,27 @@
+https://subingwen.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/page/3/
+
+
+https://www.cnblogs.com/ring1992/category/1294186.html?page=1
+https://www.cnblogs.com/ring1992/p/9592428.html
+
+
+仅有C++ code:
+https://gitee.com/jaredtao/DesignPattern
+
+
+Java Code:
+https://github.com/shusheng007/design-patterns
+
+[Java版: 感觉质量还不错的设计模式专题](https://blog.csdn.net/weixin_43905387/category_10903295.html)
+
+
+Python Flask:
+https://www.cnblogs.com/xianyi-yk/p/14695401.html
+https://www.cnblogs.com/whtjyt/p/16360058.html
+
+
+UML类图讲解:
+https://juejin.cn/post/6844903893327937550
+
+WebServer:
+https://github.com/linyacool/WebServer/

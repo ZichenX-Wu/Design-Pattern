@@ -1,0 +1,53 @@
+Reference: https://zhuanlan.zhihu.com/p/483594560
+
+https://blog.csdn.net/janeqi1987/article/details/103945540?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-103945540-blog-116085949.235%5Ev38%5Epc_relevant_sort&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-103945540-blog-116085949.235%5Ev38%5Epc_relevant_sort&utm_relevant_index=2
+
+https://www.cnblogs.com/ring1992/p/9592942.html
+
+适配器模式是一种结构型设计模式， 它能使接口不兼容的对象能够相互合作。
+
+「适配器模式」将一个类的接口转换成客户希望的另外一个接口，使得原本不兼容的接口一起工作。
+
+
+从上图可见，适配器模式只有3个角色
+
+Target: 是一个接口，它是我们客户端使用的目标接口 (Old Interface)
+
+Adaptee: 我们想要使用的接口与Target不兼容的类，它可以是一个接口，也可以是一个类。(New Interface)
+
+Adapter: 适配器类，此模式的核心。它需要实现目标接口Target，而且必须要引用Adaptee，因为我们要在此类中包装Adaptee的功能
+
+适配器模式：我们现在有一个类的新的接口，但是客户那边使用的一直都是一个老的接口。为了解决这一问题，适配器出现了，它的功能就是"将新的接口适配到老的接口上面"。这样客户还能够依旧使用老的接口，只不过这个老的接口会经过一层适配器，然后在适配器层去调用新的接口。
+
+
+适配器模式的实现有2种：
+1. 类适配器
+2. 对象适配器
+
+类适配器：Adapter类是"多继承"自Target类和Adaptee类的，然后重写Target的Old Interface方法，在这个方法中进行一些处理，最终调用Adaptee的接口。
+
+对象适配器：Adapter类是单继承自Target类的，同时在Adapter类中有Adaptee类的成员(组合)，然后重写Target的Old Interface，在这个方法中通过Adaptee成员去调用Adaptee的接口。
+
+综合而言，推荐"对象适配器"!(耦合度更低，能使用组合就不用继承)
+
+
+类适配器和对象适配器的比较:
+
+类适配器有以下特点：
+
+1. 由于Adapter直接继承自Adaptee类，所以，在Adapter类中可以对Adaptee类的方法进行重定义；
+2. 如果在Adaptee中添加了一个抽象方法，那么Adapter也要进行相应的改动，这样就带来高耦合；
+3. 如果Adaptee还有其它子类，而在Adapter中想调用Adaptee其它子类的方法时，使用类适配器是无法做到的。
+
+
+对象适配器有以下特点：
+
+1. 有的时候，你会发现，不是很容易去构造一个Adaptee类型的对象；
+2. 当Adaptee中添加新的抽象方法时，Adapter类不需要做任何调整，也能正确的进行动作；
+3. 可以使用多态的方式在Adapter类中调用Adaptee类子类的方法。
+
+
+由于对象适配器的耦合度比较低，所以在很多的书中都建议使用对象适配器。在我们实际项目中，也是如此，能使用对象组合的方式，就不使用多继承的方式。
+
+
+
