@@ -53,7 +53,7 @@ private:
     std::string _state;
 };
 
-//看管者(管理Mementod的类)
+//看管者(管理Memento的类)
 class Caretaker
 {
 public:
