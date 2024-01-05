@@ -3,6 +3,9 @@ using namespace std;
 
 #define SAFE_DELETE(p) if (p) { delete p; p = NULL; }
 
+// DepartmentManager > ProjectSupervisor > ProjectManager
+// 请求的处理过程是反着来的，先让ProjectManager处理后交给ProjectSupervisor(如果需要的话)，最终由DepartmentManager再次审核(如果需要的话)。
+
 class HolidayRequest
 {
 public:
@@ -20,27 +23,6 @@ class Manager
 {
 public:
     virtual bool HandleRequest(HolidayRequest *pRequest) = 0;
-};
-
-// Project manager
-class PM : public Manager
-{
-public:
-    PM(Manager *handler)
-        :m_pHandler(handler)
-    {}
-
-    bool HandleRequest(HolidayRequest *pRequest)
-    {
-        if (pRequest->GetHour() <= 2 || m_pHandler == NULL)
-        {
-            cout<<"PM said:OK."<<endl;
-            return true;
-        }
-        return m_pHandler->HandleRequest(pRequest);
-    }
-private:
-    Manager *m_pHandler;
 };
 
 // Department manager
@@ -86,6 +68,27 @@ public:
         }
         cout<<"PS said:OK."<<endl;
         return true;
+    }
+private:
+    Manager *m_pHandler;
+};
+
+// Project manager
+class PM : public Manager
+{
+public:
+    PM(Manager *handler)
+        :m_pHandler(handler)
+    {}
+
+    bool HandleRequest(HolidayRequest *pRequest)
+    {
+        if (pRequest->GetHour() <= 2 || m_pHandler == NULL)
+        {
+            cout<<"PM said:OK."<<endl;
+            return true;
+        }
+        return m_pHandler->HandleRequest(pRequest);
     }
 private:
     Manager *m_pHandler;

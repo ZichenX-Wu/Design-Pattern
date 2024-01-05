@@ -1,5 +1,14 @@
 在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。
 
+Memento在这个过程中起到了载体的作用。
+主要的交互对象是Originator和Caretaker。
+Originator是我们服务的类;
+Caretaker是保存一系列memnto的类;
+
+Originator通过调用自身的saveStateToMemento()会生成一个新的Memento对象。我们需要把这个对象存入到Caretaker中。
+Originator通过调用自身的restoreStateToMemento()来获取先前的Memento对象，但是该方法需要传入一个Memento对象，这个对象我们需要从Caretaker中get到。
+
+
 优点：
 1. 封装了对象的状态，使得可以在不破坏封装性的情况下恢复对象的状态。
 2. 可以随时保存和恢复对象状态，这使得程序能够更加容易地进行“回滚”或“撤销”操作。
